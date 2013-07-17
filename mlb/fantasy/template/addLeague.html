@@ -1,0 +1,10 @@
+<form method="post">
+{% block content %}
+{% csrf_token %}
+
+    <label>League</label>
+    <input id="name" type="text" name="name" maxlength="20" /><br />
+
+    <input type="submit" value="Submit" />
+{% endblock %}
+</form>

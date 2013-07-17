@@ -1,0 +1,15 @@
+<form method="post">
+{% block content %}
+{% csrf_token %}
+    <label>Username</label>
+    <input id="user" type="text" name="user" maxlength="30" /><BR />
+
+    <label>Email</label>
+    <input id="email" type="text" name="email" maxlength="30" /><BR />
+
+    <label>Password</label>
+    <input id="password" type="text" name="password" maxlength="128" /><br />
+
+    <input type="submit" value="Submit" />
+{% endblock %}
+</form>

@@ -1,0 +1,5 @@
+
+{% for scoreboard in scoreboards %}
+    {{ scoreboard.away }} at {{ scoreboard.home }} - Away {{ scoreboard.away_period_scores}} - Home
+    {{ scoreboard.home_period_scores }} - Time - {{ scoreboard.start_date_time}}<br />
+{% endfor %}

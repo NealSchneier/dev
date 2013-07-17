@@ -1,0 +1,391 @@
+drop database mlb;
+create database mlb;
+
+use mlb;
+
+create table fantasy_team(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	conference varchar(100),
+	division varchar(100),
+	first_name varchar(100),
+	last_name varchar(100),
+	site_name varchar(100),
+	city varchar(100),
+	state varchar(100),
+	abbreviation varchar(100) not null unique,
+	team_id varchar(100),
+	full_name varchar(100),
+	active varchar(10)
+);
+
+create table fantasy_surface(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	name varchar(100)
+);
+
+create table fantasy_site (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	city varchar(100),
+	state varchar(100),
+	capacity int,
+	name varchar(100) not null unique,
+	surface_id int,
+	foreign key (surface_id) references surface_id(id)
+);
+
+create table game(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	event_id varchar(100),
+	season_type varchar(100),
+	fantasy_site int,
+	away int,
+	home int,
+	event_status varchar(100),
+	sport varchar(100),
+	date varchar(10),
+	foreign key (site) references site(id),
+	foreign key (away) references team(id),
+	foreign key (home) references team(id)
+);
+
+create table pitcher(
+	id int not null auto_increment primary key,
+	last_name varchar(100),
+	win varchar(5),
+	runs_allowed int,
+	hit_by_pitch int,
+	walks int,
+	intentional_walks int,
+	whip int,
+	first_name varchar(100),
+	errors int,
+	display_name varchar(100),
+	pitches_strikes int,
+	innings_pitched decimal(5, 1),
+	save varchar(5),
+	era decimal(5, 2),
+	home_runs_allowed int,
+	pitch_order int,
+	hits_allowed int,
+	wild_pitches int,
+	loss varchar(5),
+	earned_runs int,
+	team_abbreviation varchar(100),
+	pitch_count int,
+	strike_outs int,
+	foreign key (team_abbreviation) references team(abbreviation)
+);
+
+create table batter_totals(
+	id int not null auto_increment primary key,
+	sac_hits int,
+	slg_string varchar(10),
+	rbi_with_two_outs int,
+	batting_highlights varchar(200),
+	sac_flies int,
+	total_bases int,
+	avg_string varchar(10),
+	avg decimal(8, 3),
+	extra_base_hits int,
+	at_bats int,
+	left_on_base int,
+	plate_appearances_per_home_run decimal(8, 3),
+	walks int,
+	ops_string varchar(10),
+	stolen_base_average decimal(8, 3),
+	triples int,
+	ops decimal(8, 3),
+	singles int,
+	stolen_bases int,
+	runs int,
+	caught_stealing int,
+	plate_appearances_per_rbi decimal(8, 3),
+	doubles int,
+	plate_appearances int,
+	at_bats_per_home_run decimal(8, 3),
+	obp_string varchar(10),
+	hits int,
+	at_bats_per_rbi decimal(8, 3),
+	strikeout_rate decimal(8, 3),
+	sacrifices int,
+	home_runs int,
+	walk_rate decimal(8, 3),
+	rbi int,
+	hit_by_pitch int,
+	strike_outs int,
+	slg decimal(8, 3),
+	obp decimal(8, 3)
+);
+
+create table batter(
+	id int not null auto_increment primary key,
+	sac_hits int,
+	slg_string varchar(10),
+	last_name varchar(100),
+	rbi_with_two_outs int,
+	batting_highlights varchar(100),
+	sub_batting_order int,
+	sac_flies int,
+	total_bases int,
+	caught_stealing int,
+	team_abbreviation varchar(100),
+	hit_by_pitch int,
+	home_runs int,
+	avg_string varchar(10),
+	avg decimal(8,3),
+	extra_base_hits int,
+	first_name varchar(100),
+	display_name varchar(100),
+	at_bats int,
+	left_on_base int,
+	plate_appearances_per_home_run decimal(8,3),
+	walks int,
+	ops_string varchar(10),
+	stolen_base_average decimal(8, 3),
+	bat_order int,
+	triples int,
+	ops decimal(8, 3),
+	singles int,
+	stolen_bases int,
+	runs int,
+	plate_appearances_per_rbi decimal(8, 3),
+	position varchar(10),
+	plate_appearances int,
+	at_bats_per_home_run decimal(8, 3),
+	obp_string varchar(10),
+	hits int,
+	at_bats_per_rbi decimal(8, 3),
+	strike_outs int,
+	strikeout_rate decimal(8, 3),
+	sacrifices int,
+	walk_rate decimal(8, 3),
+	rbi int,
+	doubles int,
+	slg decimal(8, 3),
+	obp decimal(8, 3)
+);
+
+create table official(
+	id int not null auto_increment primary key,
+	first_name varchar(100),
+	last_name varchar(100)
+);
+
+create table officials(
+	id int not null auto_increment primary key,
+	home int,
+	first int,
+	second int,
+	third int,
+	foreign key (home) references official(id),
+	foreign key (first) references official(id),
+	foreign key (second) references official(id),
+	foreign key (third) references official(id)
+);
+
+create table scoreboard(
+	id int not null auto_increment primary key,
+	home_fantasy_team int,
+	away_fantasy_team int,
+	away_batters_total int,
+	home_batters_total int,
+	home_period_scores varchar(100),
+	away_period_scores varchar(100),
+	officials int,
+	start_date_time varchar(100),
+	attendance int,
+	temperature decimal(5, 2),
+	season_type varchar(100),
+	fantasy_site int,
+	foreign key (home_team) references team(id),
+	foreign key (away_team) references team(id),
+	foreign key (site) references site(id),
+	foreign key (officials) references officials(id),
+	foreign key (away_batters_total) references batter_totals(id),
+	foreign key (home_batters_total) references batter_totals(id)
+);
+
+create table scoreboard_to_pitcher(
+	id int not null auto_increment primary key,
+	scoreboard int,
+	pitcher int,
+	foreign key (scoreboard) references scoreboard(id),
+	foreign key (pitcher) references pitcher(id)
+);
+
+create table scoreboard_to_batter(
+	id int not null auto_increment primary key,
+	scoreboard int,
+	batter int,
+	foreign key (scoreboard) references scoreboard(id),
+	foreign key (batter) references batter(id)
+);
+
+create table league(
+	id int not null auto_increment primary key,
+	name varchar(20) not null unique
+);
+
+create table player(
+	id int not null auto_increment primary key,
+	name varchar(20) not null,
+	email varchar(25)
+);
+
+create table league_to_player(
+	id int not null auto_increment primary key,
+	league int,
+	player int,
+	foreign key (league) references league(id),
+	foreign key (player) references player(id)
+);
+
+create table daily(
+	id int not null auto_increment primary key,
+	game int,
+	winner int,
+	foreign key (game) references game(id),
+	foreign key (winner) references team(id)
+);
+
+create table player_to_daily(
+	id int not null auto_increment primary key,
+	player int,
+	daily int,
+	foreign key (player) references player(id),
+	foreign key (daily) references daily(id)
+);
+
+create table weekly(
+	id int not null auto_increment primary key,
+	start_date timestamp,
+	player1 int,
+	player2 int,
+	monday int,
+	tuesday int,
+	wednesday int,
+	thursday int,
+	friday int,
+	saturday int,
+	sunday int,
+	foreign key (player1) references player(id),
+	foreign key (player2) references player(id),
+	foreign key (monday) references daily(id),
+	foreign key (tuesday) references daily(id),
+	foreign key (wednesday) references daily(id),
+	foreign key (thursday) references daily(id),
+	foreign key (friday) references daily(id),
+	foreign key (saturday) references daily(id),
+	foreign key (sunday) references daily(id)
+);
+
+insert into league(name) values ("Test League");
+insert into player(name) values ("Test Player");
+insert into league_to_player (league, player) values (1, 1);
+
+
+insert into fantasy_surface (name) values ("Grass");
+insert into fantasy_surface (name) values ("Field Turf");
+
+
+insert into fantasy_team (conference, division, first_name, last_name, site_name, city, state, abbreviation, team_id, full_name, active) values ("National", "East", "Washington", "Nationals", "Nationals Park", "Washington", "District of Columbia", "WAS", "washington-nationals", "Washington Nationals", "true");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("arizona-diamondbacks", "ARI", "true", "Arizona", "Diamondbacks", "National", "West", "Chase Field", "Phoenix", "Arizona", "Arizona Diamondbacks");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("atlanta-braves", "ATL", "true", "Atlanta", "Braves", "National", "East", "Turner Field", "Atlanta", "Georgia", "Atlanta Braves");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("baltimore-orioles", "BAL", "true", "Baltimore", "Orioles", "American", "East", "Oriole Park at Camden Yards", "Baltimore", "Maryland", "Baltimore Orioles");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("boston-red-sox", "BOS", "true", "Boston", "Red Sox", "American", "East", "Fenway Park", "Boston", "Massachusetts", "Boston Red Sox");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("chicago-cubs", "CHC", "true", "Chicago", "Cubs", "National", "Central", "Wrigley Field", "Chicago", "Illinois", "Chicago Cubs");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("chicago-white-sox", "CHW", "true", "Chicago", "White Sox", "American", "Central", "U.S. Cellular Field", "Chicago", "Illinois", "Chicago White Sox");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("cincinnati-reds", "CIN", "true", "Cincinnati", "Reds", "National", "Central", "Great American Ball Park", "Cincinnati", "Ohio", "Cincinnati Reds");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("cleveland-indians", "CLE", "true", "Cleveland", "Indians", "American", "Central", "Progressive Field", "Cleveland", "Ohio", "Cleveland Indians");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("colorado-rockies", "COL", "true", "Colorado", "Rockies", "National", "West", "Coors Field", "Denver", "Colorado", "Colorado Rockies");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("detroit-tigers", "DET", "true", "Detroit", "Tigers", "American", "Central", "Comerica Park", "Detroit", "Michigan", "Detroit Tigers");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("houston-astros", "HOU", "true", "Houston", "Astros", "American", "West", "Minute Maid Park", "Houston", "Texas", "Houston Astros");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("kansas-city-royals", "KC", "true", "Kansas City", "Royals", "American", "Central", "Kauffman Stadium", "Kansas City", "Missouri", "Kansas City Royals");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("los-angeles-angels", "LAA", "true", "Los Angeles", "Angels", "American", "West", "Angel Stadium of Anaheim", "Anaheim", "California", "Los Angeles Angels");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("los-angeles-dodgers", "LAD", "true", "Los Angeles", "Dodgers", "National", "West", "Dodger Stadium", "Los Angeles", "California", "Los Angeles Dodgers");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("miami-marlins", "MIA", "true", "Miami", "Marlins", "National", "East", "Marlins Park", "Miami", "Florida", "Miami Marlins");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("milwaukee-brewers", "MIL", "true", "Milwaukee", "Brewers", "National", "Central", "Miller Park", "Milwaukee", "Wisconsin", "Milwaukee Brewers");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("minnesota-twins", "MIN", "true", "Minnesota", "Twins", "American", "Central", "Target Field", "Minneapolis", "Minnesota", "Minnesota Twins");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("new-york-mets", "NYM", "true", "New York", "Mets", "National", "East", "Citi Field", "Flushing", "New York", "New York Mets");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("new-york-yankees", "NYY", "true", "New York", "Yankees", "American", "East", "Yankees Stadium", "Bronx", "New York", "New York Yankees");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("oakland-athletics", "OAK", "true", "Oakland", "Athletics", "American", "West", "O.co Coliseum", "Oakland", "California", "Oakland Athletics");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("philadelphia-phillies", "PHI", "true", "Philadelphia", "Phillies", "National", "East", "Citizens Bank Park", "Philadelphia", "Pennsylvania", "Philadelphia Phillies");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("pittsburgh-pirates", "PIT", "true", "Pittsburgh", "Pirates", "National", "Central", "PNC Park", "Pittsburgh", "Pennsylvania", "Pittsburgh Pirates");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("san-diego-padres", "SD", "true", "San Diego", "Padres", "National", "West", "PETCO Park", "San Diego", "California", "San Diego Padres");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("san-francisco-giants", "SF", "true", "San Francisco", "Giants", "National", "West", "AT&T Park", "San Francisco", "California", "San Francisco Giants");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("seattle-mariners", "SEA", "true", "Seattle", "Mariners", "American", "West", "Safeco Field", "Seattle", "Washington", "Seattle Mariners");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("st-louis-cardinals", "STL", "true", "St. Louis", "Cardinals", "National", "Central", "Busch Stadium", "Saint Louis", "Missouri", "St. Louis Cardinals");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("tampa-bay-rays", "TB", "true", "Tampa Bay", "Rays", "American", "East", "Tropicana Field", "Saint Petersburg", "Florida", "Tampa Bay Rays");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("texas-rangers", "TEX", "true", "Texas", "Rangers", "American", "West", "Rangers Ballpark in Arlington", "Arlington", "Texas", "Texas Rangers");
+
+insert into fantasy_team (team_id, abbreviation, active, first_name, last_name, conference, division, site_name, city, state, full_name) values ("toronto-blue-jays", "TOR", "true", "Toronto", "Blue Jays", "American", "East", "Rogers Centre", "Toronto", "Ontario", "Toronto Blue Jays");
+
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Toronto", "Ontario", 49230, "Rogers Centre", 2);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Boston", "Massachusetts", 33871, "Fenway Park", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Kansas City", "Missouri", 40793, "Kauffman Stadium", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("San Francisco", "California", 41915, "AT&T Park", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Detroit", "Michigan", 41255, "Comerica Park", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Milwaukee", "Wisconsin", 43000, "Miller Park", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Cincinnati", "Ohio", 42319, "Great American Ball Park", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Saint Petersburg", "Florida", 42735, "Tropicana Field", 2);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Flushing", "New York", 41922, "Citi Field", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Houston", "Texas", 40950, "Minute Maid Park", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Los Angeles", "California", 56000, "Dodger Stadium", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Chicago", "Illinois", 40615, "U.S. Cellular Field", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Washington", "District of Columbia", 41487, "Nationals Park", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Seattle", "Washington", 47116, "Safeco Field", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Phoenix", "Arizona", 49033, "Chase Field", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Chicago", "illinois", 39538, "Wrigley Field", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Philadelphia", "Pennsylvania", 43500, "Citizens Bank Park", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Pittsburgh", "Pennsylvania", 38496, "PNC Park", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Baltimore", "Maryland", 48876, "Oriole Park at Camden Yards", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Bronx", "New York", 50291, "Yankee Stadium", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Cleveland", "Ohio", 43429, "Progressive Field", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Atlanta", "Georgia", 50096, "Turner Field", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Miami", "Florida", 37442, "Marlins Park", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Arlington", "Texas", 49115, "Rangers Ballpark in Arlington", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Minneapolis", "Minnesota", 39504, "Target Field", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Saint Louis", "Missouri", 50345, "Busch Stadium", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Denver", "Colorado", 50445, "Coors Field", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Anaheim", "California", 45050, "Angel Stadium of Anaheim", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("San Diego", "California", 42445, "PETCO Park", 1);
+insert into fantasy_site (city, state, capacity, name, surface_id) values ("Oakland", "California", 35067, "O.co Coliseum", 1);
+
+
+
+
+
+
+
+
+
+
+
