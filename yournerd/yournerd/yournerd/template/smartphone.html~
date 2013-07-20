@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Smartphones{% endblock %}
+
+{% block content %}
+	<h2>Smartphones</h2>
+	<table>
+		<tr>
+			<td>Name</td>
+			<td>Voice Recognition</td>
+			<td>Maps</td>
+			<td>Apps</td>
+			<td>User Interface</td>
+			<td>Speed</td>
+			<td>Processor</td>
+			<td>Wireless</td>
+			<td>Keyboard</td>
+			<td>Video</td>
+			<td>Speakers</td>
+			<td>Camera</td>
+			<td>Operating System</td>
+			<td>Battery Life</td>
+			<td>Screen Quality</td>
+			<td>Bluetooth</td>
+			<td>Brand Recognition</td>
+		</tr>
+		{% for smartphone in smartphones %}
+		<tr>
+			<td>{{ smartphone.name }}</td>
+			<td>{{ smartphone.voice_recognition.name }}</td>
+			<td>{{ smartphone.maps }}</td>
+			<td>{{ smartphone.name }}</td>
+			<td>{{ smartphone.name }}</td>
+			<td>{{ smartphone.name }}</td>
+			<td>{{ smartphone.name }}</td>
+			<td>{{ smartphone.name }}</td>
+			<td>{{ smartphone.name }}</td>
+			<td>{{ smartphone.name }}</td>
+			<td>{{ smartphone.name }}</td>
+			<td>{{ smartphone.name }}</td>
+			<td>{{ smartphone.name }}</td>
+			<td>{{ smartphone.name }}</td>
+			<td>{{ smartphone.name }}</td>
+			<td>{{ smartphone.name }}</td>
+			<td>{{ smartphone.name }}</td>
+			<td>{{ smartphone.name }}</td>
+			<td>{{ smartphone.name }}</td>
+
+
+		</tr>
+		{% endfor %}
+	</table>
+
+{% endblock %}

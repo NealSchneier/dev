@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Smartphones{% endblock %}
+
+{% block content %}
+	<form id="user" >
+		<input type="checkbox" name="name" value="name" />Name<br />
+
+		<input type="checkbox" name="maps" value="maps" />Maps<br />
+		<input type="checkbox" name="apps" value="apps" />Apps<br />
+		<input type="checkbox" name="ui" value="ui" />User Interface<br />
+		<input type="checkbox" name="speed" value="speed" />Speed<br />
+		<input type="checkbox" name="processor" value="processor" />Processor<br />
+		<input type="checkbox" name="wireless" value="wireless" />Wireless<br />
+		<input type="checkbox" name="keyboard" value="keyboard" />Keyboard<br />
+		<input type="checkbox" name="video" value="video" />Video<br />
+		<input type="checkbox" name="speakers" value="speakers" />Speakers<br />
+		<input type="checkbox" name="camera" value="camera" />Camera<br />
+		<input type="checkbox" name="os" value="os" />Operating System<br />
+		<input type="checkbox" name="battery" value="battery" />Battery<br />
+
+
+
+
+	</form>
+	<br/>
+	<br/>
+	<br/>
+	<h2>Smartphones</h2>
+	<table>
+		<tr>
+			<td class="name">Name</td>
+			<td class="maps">Maps</td>
+			<td class="facebook">Facebook</td>
+			<td class="netflix">Netflix</td>
+			<td class="pandora">Pandora</td>
+			<td class="gmail">GMail</td>
+			<td class="ui">User Interface</td>
+			<td class="ram">RAM</td>
+			<td class="processor">Processor</td>
+			<td class="ieeen">IEEE-N</td>
+			<td class="ieeeg">IEEE-G</td>
+			<td class="physicalKeyboard">Physical Keyboard</td>
+			<td class="stylusKeyboard">Stylus</td>
+			<td class="videoResolution">Video Resolution</td>
+			<td class="speakersLocation"></td>
+			<td class="cameraMegapixels">Camera Megapixels</td>
+			<td class="cameraMegapixelsFront">Camera Front Facing Megapixels</td>
+			<td class="osName">Operating System</td>
+			<td class="osType">Operating System Family</td>
+			<td class="osVersion">Opersating System Version</td>
+			<td class="batteryTalk">Battery Talk Time</td>
+			<td class="batteryInternet">Battery Internet Time</td>
+			<td class="screenType">Screen Type</td>
+			<td class="screenResolution">Screen Resolution</td>
+			<td class="bluetooth3">Bluetooth Version 3</td>
+			<td class="bluetooth4">Bluetooth Version 4</td>
+			<td class="brandName">Brand</td>
+			<td class="rating">Phone Rating</td>
+			<td class="details">Phone Explaination</td>
+		</tr>
+		{% for smart in smartphones %}
+		<tr>
+			<td class="name">{{ smart.name }}</td>
+			<td class="maps">{{ smart.maps }}</td>
+			<td class="facebook">{{ smart.apps.app_family.name }}</td>
+			<td class="netflix">{{ smart.apps.app_family.name }}</td>
+			<td class="pandora">{{ smart.apps.app_family.name }}</td>
+			<td class="gmail">{{ smart.apps.app_family.name }}</td>
+			<td class="ui">{{ smart.ui.name }}</td>
+			<td class="ram">{{ smart.speed.ram }}</td>
+			<td class="processor">{{ smart.processor.name }}</td>
+			<td class="ieeen">{{ smart.wireless.ieee_n }}</td>
+			<td class="ieeeg">{{ smart.wireless.ieee_g }}</td>
+			<td class="physicalKeyboard">{{ smart.keyboard.rating }}</td>
+			<td class="stylusKeyboard">{{ smart.keyboard.rating }}</td>
+			<td class="videoResolution">{{ smart.video.rating }}</td>
+			<td class="speakersLocation">{{ smart.speakers.rating }}</td>
+			<td class="cameraMegapixels">{{ smart.camera.megapixels }}</td>
+			<td class="cameraMegapixelsFront">{{ smart.camera.megapixels }}</td>
+			<td class="osName">{{ smart.os.name }}</td>
+			<td class="osType">{{ smart.os.family.family }}</td>
+			<td class="osVersion">{{ smart.os.version }}</td>
+			<td class="batteryTalk">{{ smart.battery.talk_time }}</td>
+			<td class="batteryInternet">{{ smart.battery.internet_time}}</td>
+			<td class="screenType">{{ smart.screen.resolution.dpi }}</td>
+			<td class="screenResolution">{{ smart.screen.resolution.first }} x {{ smart.screen.resolution.second  }} </td>
+			<td class="bluetooth3">{{ smart.bluetooth.ver3 }}</td>
+			<td class="bluetooth4">{{ smart.bluetooth.ver4 }}</td>
+			<td class="brandName">{{ smart.brand.name }}</td>
+			<td class="rating">{{ smart.rating }}</td>
+			<td class="details">{{ smart.details}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+
+{% endblock %}

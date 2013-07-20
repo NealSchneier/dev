@@ -1,0 +1,157 @@
+BEGIN;
+CREATE TABLE `shownerd_brand` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `brand_name` varchar(30) NOT NULL,
+    `recognition` varchar(200) NOT NULL,
+    `rating` integer NOT NULL
+)
+;
+CREATE TABLE `shownerd_bluetooth` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `ver3` varchar(1) NOT NULL,
+    `ver4` varchar(1) NOT NULL,
+    `rating` integer NOT NULL
+)
+;
+CREATE TABLE `shownerd_screentype` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `name` varchar(20) NOT NULL,
+    `rating` integer NOT NULL
+)
+;
+CREATE TABLE `shownerd_resolution` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `first` integer NOT NULL,
+    `second` integer NOT NULL
+)
+;
+CREATE TABLE `shownerd_screen` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `screen_type_id` integer NOT NULL,
+    `brand_id_id` integer NOT NULL,
+    `sensitivity` integer NOT NULL,
+    `speed` integer NOT NULL,
+    `resolution_id_id` integer NOT NULL,
+    `rating` integer NOT NULL
+)
+;
+ALTER TABLE `shownerd_screen` ADD CONSTRAINT `screen_type_id_refs_id_e9c92d15` FOREIGN KEY (`screen_type_id`) REFERENCES `shownerd_screentype` (`id`);
+ALTER TABLE `shownerd_screen` ADD CONSTRAINT `brand_id_id_refs_id_76c19a07` FOREIGN KEY (`brand_id_id`) REFERENCES `shownerd_brand` (`id`);
+ALTER TABLE `shownerd_screen` ADD CONSTRAINT `resolution_id_id_refs_id_8a361b58` FOREIGN KEY (`resolution_id_id`) REFERENCES `shownerd_resolution` (`id`);
+CREATE TABLE `shownerd_battery` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `name` varchar(100) NOT NULL,
+    `brand_id_id` integer NOT NULL,
+    `talk_time` integer NOT NULL,
+    `internet_time` integer NOT NULL,
+    `rating` integer NOT NULL
+)
+;
+ALTER TABLE `shownerd_battery` ADD CONSTRAINT `brand_id_id_refs_id_56aa6f94` FOREIGN KEY (`brand_id_id`) REFERENCES `shownerd_brand` (`id`);
+CREATE TABLE `shownerd_os` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `name` varchar(20) NOT NULL,
+    `family` varchar(20) NOT NULL,
+    `version` varchar(50) NOT NULL,
+    `feature1` varchar(100) NOT NULL,
+    `feature2` varchar(100) NOT NULL,
+    `feature3` varchar(100) NOT NULL,
+    `rating` integer NOT NULL
+)
+;
+CREATE TABLE `shownerd_camera` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `megapixels` numeric(10, 2) NOT NULL,
+    `speed` integer NOT NULL,
+    `flash` integer NOT NULL,
+    `filters` integer NOT NULL,
+    `software` integer NOT NULL,
+    `front_facing` varchar(1) NOT NULL,
+    `rating` integer NOT NULL
+)
+;
+CREATE TABLE `shownerd_speakers` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `location` varchar(100) NOT NULL,
+    `rating` integer NOT NULL
+)
+;
+CREATE TABLE `shownerd_video` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `hdmi` varchar(1) NOT NULL,
+    `resolution_id_id` integer NOT NULL,
+    `rating_id` integer NOT NULL
+)
+;
+ALTER TABLE `shownerd_video` ADD CONSTRAINT `resolution_id_id_refs_id_9bf14277` FOREIGN KEY (`resolution_id_id`) REFERENCES `shownerd_resolution` (`id`);
+CREATE TABLE `shownerd_keyboard` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `physical` varchar(1) NOT NULL,
+    `stylus` varchar(1) NOT NULL,
+    `rating` integer NOT NULL
+)
+;
+CREATE TABLE `shownerd_wireless` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `ieee_n` varchar(1) NOT NULL,
+    `ieee_g` varchar(1) NOT NULL,
+    `rating` integer NOT NULL
+)
+;
+CREATE TABLE `shownerd_processor` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `name` varchar(20) NOT NULL,
+    `cores` integer NOT NULL,
+    `clock_speed` integer NOT NULL,
+    `rating` integer NOT NULL
+)
+;
+CREATE TABLE `shownerd_speed` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `processor_id` integer NOT NULL,
+    `ram` integer NOT NULL,
+    `rating` integer NOT NULL
+)
+;
+ALTER TABLE `shownerd_speed` ADD CONSTRAINT `processor_id_refs_id_d0b5e41e` FOREIGN KEY (`processor_id`) REFERENCES `shownerd_processor` (`id`);
+CREATE TABLE `shownerd_ui` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `name` varchar(20) NOT NULL,
+    `version` varchar(20) NOT NULL,
+    `rating` integer NOT NULL
+)
+;
+CREATE TABLE `shownerd_apps` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `name` varchar(20) NOT NULL,
+    `rating` integer NOT NULL
+)
+;
+CREATE TABLE `shownerd_carrier` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `name` varchar(20) NOT NULL,
+    `LTE` varchar(1) NOT NULL
+)
+;
+CREATE TABLE `shownerd_maps` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `name` varchar(20) NOT NULL,
+    `turn_by_turn` varchar(1) NOT NULL,
+    `maps` varchar(1) NOT NULL,
+    `rating` integer NOT NULL
+)
+;
+CREATE TABLE `shownerd_voice_recognition` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `name` varchar(20) NOT NULL,
+    `rating` integer NOT NULL
+)
+;
+CREATE INDEX `shownerd_screen_c0e9e16e` ON `shownerd_screen` (`screen_type_id`);
+CREATE INDEX `shownerd_screen_6a59efff` ON `shownerd_screen` (`brand_id_id`);
+CREATE INDEX `shownerd_screen_b9bac948` ON `shownerd_screen` (`resolution_id_id`);
+CREATE INDEX `shownerd_battery_6a59efff` ON `shownerd_battery` (`brand_id_id`);
+CREATE INDEX `shownerd_video_b9bac948` ON `shownerd_video` (`resolution_id_id`);
+CREATE INDEX `shownerd_speed_c095d6d4` ON `shownerd_speed` (`processor_id`);
+
+COMMIT;

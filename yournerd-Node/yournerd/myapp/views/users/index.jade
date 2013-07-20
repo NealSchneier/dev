@@ -1,0 +1,265 @@
+
+extends ../layout
+
+block content
+  div#home
+    h1 Home
+    label Search for your next smartphone
+      br
+      blockquote Important - Not Important 
+      label Operating System
+        input(type="checkbox", name="Operating-important")
+        input(type="checkbox", name="Operating-not")
+      br
+      label Wireless
+        input(type="checkbox", name="Wireless-important")
+        input(type="checkbox", name="Wireless-not")
+      br
+      label Content Management
+        input(type="checkbox", name="Content-important")
+        input(type="checkbox", name="Content-not")
+      br
+      label Brand
+        input(type="checkbox", name="Brand-important")
+        input(type="checkbox", name="Brand-not")
+      br
+      label Bluetooth
+        input(type="checkbox", name="Bluetooth-important")
+        input(type="checkbox", name="Bluetooth-not")
+      br
+      label Screen
+        input(type="checkbox", name="Screen-important")
+        input(type="checkbox", name="Screen-not")
+      br
+      label Battery
+        input(type="checkbox", name="Battery-important")
+        input(type="checkbox", name="Battery-not")
+      br
+      label Camera
+        input(type="checkbox", name="Camera-important")
+        input(type="checkbox", name="Camera-not")
+      br
+      label Speakers
+        input(type="checkbox", name="Speakers-important")
+        input(type="checkbox", name="Speakers-not")
+      br
+      label Video
+        input(type="checkbox", name="Video-important")
+        input(type="checkbox", name="Video-not")
+      br
+      label Keyboard
+        input(type="checkbox", name="Keyboard-important")
+        input(type="checkbox", name="Keyboard-not")
+      br
+      label Speed
+        input(type="checkbox", name="Speed-important")
+        input(type="checkbox", name="Speed-not")
+      br
+      label User Interface
+        input(type="checkbox", name="User-important")
+        input(type="checkbox", name="User-not")
+      br
+      label Social Media
+        input(type="checkbox", name="Social-important")
+        input(type="checkbox", name="Social-not")
+      br
+      label Tablet
+        input(type="checkbox", name="Tablet-important")
+        input(type="checkbox", name="Tablet-not")
+  div#admin
+    h1 Admin
+    p Insert new Smartphone into the database
+    div#operating-system
+      h3 Operating System
+      br
+      label Name
+        input(type="textbox", name="os-name")
+      br
+      label Version
+        input(type="textbox", name="os-version")
+      br
+      label Feature 1
+        input(type="textbox", name="os-feature1")
+      br
+      label Feature 2
+        input(type="textbox", name="os-feature2")
+      br
+      label Feature 3
+        input(type="textbox", name="os-feature3")
+      br
+      label Rating 10
+        input(type="textbox", name="os-rating")
+    div#wireless
+      h3 Wireless
+      br
+      label IEEE-N
+        input(type="textbox", name="wireless-n")
+      br
+      label IEEE-G
+        input(type="textbox", name="wirless-g")
+      br
+      label Rating 10
+        input(type="textbox", name="wirless-rating")
+    div#brand
+      h3 Brand
+      br
+      label Name
+        input(type="textbox", name="brand-name")
+      br
+      label Rating 10
+        input(type="textbox", name="brand-rating")
+      br
+      label Recognition
+        input(type="textbox", name="brand-recognition")
+    div#bluetooth
+      h3 Bluetooth
+      br
+      label Rating 10
+        input(type="textbox", name="bluetooth-rating")
+      br
+      label 4.0
+        input(type="text", name="bluetooth-4")
+    div#screen
+      h3 Screen
+      br
+      label Brand
+        input(type="textbox", name="screen-brand")
+      br
+      label Sensitivity
+        input(type="textbox", name="screen-sensitivity")
+      br
+      label Speed
+        input(type="textbox", name="screen-speed")
+      br
+      label Resolution
+        input(type="textbox", name="screen-resolution")
+      br
+      label Rating 10
+        input(type="textbox", name="screen-rating")
+    div#battery
+      h3 Battery
+      br
+      label Name
+        input(type="textbox", name="battery-name")
+      br
+      label Brand
+        input(type="textbox", name="battery-brand")
+      br
+      label Talk Time
+        input(type="textbox", name="battery-talktime")
+      br
+      label Surfing Time
+        input(type="textbox", name="battery-internet")
+      br
+      label Rating 10
+        input(type="textbox", name="battery-rating")
+    div#frontCamera
+      h3 Front Camera
+      br
+      label MegaPixels
+        input(type="textbox", name="frontCamera-megapixels")
+      br
+      label Speed
+        input(type="textbox", name="frontCamera-speed")
+      br 
+      label flash
+        input(type="textbox", name="frontCamera-flash")
+      br
+      label filters
+        input(type="textbox", name="frontCamera-filters")
+      br
+      label Rating 10
+        input(type="textbox", name="frontCamera-rating")
+    div#rearCamera
+      h3 Rear Camera
+      br
+      label MegaPixels
+        input(type="textbox", name="rearCamera-megapixels")
+      br
+      label Speed
+        input(type="textbox", name="rearCamera-speed")
+      br 
+      label flash
+        input(type="textbox", name="rearCamera-flash")
+      br
+      label filters
+        input(type="textbox", name="rearCamera-filters")
+      br
+      label Rating 10
+        input(type="textbox", name="rearCamera-rating") 
+    div#speakers
+      h3 Speakers
+      br
+      label Locations
+        input(type="textbox", name="speakers-locations")
+      br
+      label Rating 10
+        input(type="textbox", name="speakers-rating")
+  div#smartphone
+    h3 Smartphone
+    br
+    label Brand
+      input(type="textbox", name="smartphone-brand")
+    br
+    label OS
+      input(type="textbox", name="smartphone-os")
+    br
+    label Wireless
+      input(type="textbox", name="smartphone-wireless")
+    br
+    label Bluetooth
+      input(type="textbox", name="smartphone-bluetooth")
+    br
+    label 3G
+      input(type="textbox", name="smartphone-3g")
+    br
+    label 4G
+      input(type="textbox", name="smartphone-4g")
+    br
+    label Camera Front
+      input(type="textbox", name="smartphone-cameraFront")
+    br
+    label Camera Rear
+      input(type="textbox", name="smartphone-cameraRear")
+    br
+    label Screen
+      input(type="textbox", name="smartphone-screen")
+    br
+    label Microphone
+      input(type="textbox", name="smartphone-microphone")
+    br
+    label Battery
+      input(type="textbox", name="smartphone-battery")
+    br
+    label Weight
+      input(type="textbox", name="smartphone-weight")                                
+    br
+    label Speakers
+      input(type="textbox", name="smartphone-speakers")
+    br
+    label Video
+      input(type="textbox", name="smartphone-video")
+    br
+    label Works With
+      input(type="textbox", name="smartphone-works-with")
+    br
+    label Keyboard
+      input(type="textbox", name="smartphone-keyboard")
+    br
+    label Social Media
+      input(type="textbox", name="smartphone-social")
+    br
+    label User Interface
+      input(type="textbox", name="smartphone-ui")
+    br
+    label Speed
+      input(type="textbox", name="smartphone-speed")
+    br
+    label GPS
+      input(type="textbox", name="smartphone-gps")
+    br
+    label Coolness
+      input(type="textbox", name="smartphone-coolness")
+    br
+    label Carrier
+      input(type="textbox", name="smartphone-carrier")                                
