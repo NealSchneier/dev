@@ -1,0 +1,26 @@
+from django.contrib import admin
+from yournerd.shownerd import models
+
+admin.site.register(models.Brand)
+admin.site.register(models.Bluetooth)
+admin.site.register(models.ScreenType)
+admin.site.register(models.Resolution)
+admin.site.register(models.Screen)
+admin.site.register(models.Battery)
+admin.site.register(models.OS)
+admin.site.register(models.Camera)
+admin.site.register(models.Speakers)
+admin.site.register(models.Video)
+admin.site.register(models.Keyboard)
+admin.site.register(models.Wireless)
+admin.site.register(models.Processor)
+admin.site.register(models.Speed)
+admin.site.register(models.UI)
+admin.site.register(models.Apps)
+admin.site.register(models.Carrier)
+admin.site.register(models.Maps)
+admin.site.register(models.Smartphone)
+admin.site.register(models.App_Family)
+admin.site.register(models.OS_Family)
+admin.site.register(models.Smartphone_To_Apps_Family)
+
