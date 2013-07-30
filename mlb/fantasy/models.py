@@ -356,7 +356,7 @@ class Pitcher_Points(models.Model):
 #the picked winner for each game for each player
 class picks(models.Model):
 	user = models.ForeignKey(User)
-	scoreboard = models.ForeignKey(Scoreboard)
+	league_game = models.ForeignKey(League_Game)
 	winner = models.ForeignKey(Team)
 
 
