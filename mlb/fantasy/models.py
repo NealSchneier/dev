@@ -358,5 +358,7 @@ class picks(models.Model):
 	user = models.ForeignKey(User)
 	league_game = models.ForeignKey(League_Game)
 	winner = models.ForeignKey(Team)
+	batter = models.ForeignKey(Batter)
+	pitcher = models.ForeignKey(Pitcher)
 
 
