@@ -2,7 +2,7 @@ from django.http import HttpResponse, Http404
 from django.template import Context, RequestContext
 from django.shortcuts import render, render_to_response
 from django.template.loader import get_template
-from models import Team, Scoreboard, Game, League, League_Games, League_Game, Picks
+from models import Team, Scoreboard, Game, League, League_Games, League_Game, picks
 from django.contrib.auth.models import User
 
 def teams(request):
@@ -102,3 +102,9 @@ def weekly_picks(request, user, date):
 
 
     return HttpResponse("")
+
+def temp(request):
+    template = get_template('index.html')
+
+    html = template.render(Context())
+    return HttpResponse(html)
