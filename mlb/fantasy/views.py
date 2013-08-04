@@ -2,19 +2,8 @@ from django.http import HttpResponse, Http404
 from django.template import Context, RequestContext
 from django.shortcuts import render, render_to_response
 from django.template.loader import get_template
-from models import Team, Scoreboard, Game, League, League_Games, League_Game
+from models import Team, Scoreboard, Game, League, League_Games, League_Game, Picks
 from django.contrib.auth.models import User
-
-
-
-# Create your views here.
-
-
-# def weekly(request):
-#     template = get_template('weekly.html')
-#     games = Weekly.objects.raw('select * from fantasy_weekly')
-#     html = template.render(Context({'games': games}))
-#     return HttpResponse(html)
 
 def teams(request):
     template = get_template('teams.html')
@@ -96,3 +85,20 @@ def add_league(request):
 
     html = render_to_response('addLeague.html', None, RequestContext(request))
     return HttpResponse(html)
+
+#form for the daily picks
+def daily_picks(request, user, date):
+
+    if request.method == 'POST':
+
+
+        picks = Picks.objects.create()
+
+
+    return HttpResponse("")
+
+#form for the weekly picks
+def weekly_picks(request, user, date):
+
+
+    return HttpResponse("")

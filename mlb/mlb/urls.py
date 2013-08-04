@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     url(r'^league/(\d+)/$', 'fantasy.views.league_weekly'),
     url(r'^user/$', 'fantasy.views.add_user'),
     url(r'^addLeague/$', 'fantasy.views.add_league'),
-    # url(r'^mlb/', include('mlb.foo.urls')),
+    url(r'^user/(\d{8})/daily/(\d{8})/$', 'fantasy.views.daily_picks'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

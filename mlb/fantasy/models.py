@@ -196,7 +196,6 @@ class Scoreboard(models.Model):
 	season_type = models.CharField(max_length=100)
 	fantasy_site = models.ForeignKey(Site)
 
-
 	def __unicode__(self):
 		return self.away_fantasy_team.full_name + " at "+ self.home_fantasy_team.full_name +" - "+ self.start_date_time
 
@@ -207,10 +206,6 @@ class Scoreboard_To_Pitcher(models.Model):
 class Scoreboard_To_Batter(models.Model):
 	scoreboard  = models.ForeignKey(Scoreboard)
 	batter   = models.ForeignKey(Batter)
-
-
-
-
 
 #these are the tables for the system
 
@@ -265,34 +260,105 @@ class League_Games(models.Model):
 #the point system for batters - relates to each league
 class Batter_Points(models.Model):
 	league = models.ForeignKey(League)
+	gp = models.IntegerField()
+	gs = models.IntegerField()
+	avg = models.DecimalField(max_digits=8, decimal_places=3)
+	obp = models.DecimalField(max_digits=8, decimal_places=3)
+	slg = models.DecimalField(max_digits=8, decimal_places=3)
+	ab = models.IntegerField()
+	r = models.IntegerField()
+	h = models.IntegerField()
+	singles = models.IntegerField()
+	doubles = models.IntegerField()
+	triples = models.IntegerField()
+	hr =  models.IntegerField()
+	rbi = models.IntegerField()
+	sh = models.IntegerField()
+	sf = models.IntegerField()
+	sb= models.IntegerField()
+	cs = models.IntegerField()
+	bb = models.IntegerField()
+	ibb = models.IntegerField()
+	hbp = models.IntegerField()
+	k = models.IntegerField()
+	gidp = models.IntegerField()
+	ops = models.DecimalField(max_digits=8, decimal_places=3)
+	tb =  models.IntegerField()
+	po =  models.IntegerField()
+	a =  models.IntegerField()
+	e =  models.IntegerField()
+	fpct = models.DecimalField(max_digits=8, decimal_places=3)
+	xbh =  models.IntegerField()
+	nsb  =  models.IntegerField()
+	sb_percentage = models.DecimalField(max_digits=8, decimal_places=3)
+	cyc =  models.IntegerField()
+	pa  =  models.IntegerField()
+	slam =  models.IntegerField()
+	ofa =  models.IntegerField()
+	dpt =  models.IntegerField()
+	ci =  models.IntegerField()
 
 
 #the point system for pitchers - relates to each league
 class Pitcher_Points(models.Model):
 	league = models.ForeignKey(League)
+	app =  models.IntegerField()
+	gs =  models.IntegerField()
+	era = models.DecimalField(max_digits=8, decimal_places=3)
+	whip = models.DecimalField(max_digits=8, decimal_places=3)
+	wins =  models.IntegerField()
+	losses =  models.IntegerField()
+	cg =  models.IntegerField()
+	sho =  models.IntegerField()
+	sv =  models.IntegerField()
+	out =  models.IntegerField()
+	h =  models.IntegerField()
+	tbf =  models.IntegerField()
+	r =  models.IntegerField()
+	er =  models.IntegerField()
+	hr =  models.IntegerField()
+	bb =  models.IntegerField()
+	ibb =  models.IntegerField()
+	hbp =  models.IntegerField()
+	k =  models.IntegerField()
+	wp =  models.IntegerField()
+	blk =  models.IntegerField()
+	sb =  models.IntegerField()
+	gidp =  models.IntegerField()
+	svop =  models.IntegerField()
+	hld =  models.IntegerField()
+	k_per_nine = models.DecimalField(max_digits=8, decimal_places=3)
+	k_per_walks = models.DecimalField(max_digits=8, decimal_places=3)
+	tb =  models.IntegerField()
+	ip = models.DecimalField(max_digits=8, decimal_places=3)
+	pc =  models.IntegerField()
+	singles =  models.IntegerField()
+	doubles =  models.IntegerField()
+	triples =  models.IntegerField()
+	rw =  models.IntegerField()
+	rl =  models.IntegerField()
+	pick =  models.IntegerField()
+	rapp =  models.IntegerField()
+	obpa  = models.DecimalField(max_digits=8, decimal_places=3)
+	win_percentage = models.DecimalField(max_digits=8, decimal_places=3)
+	hits_per_nine = models.DecimalField(max_digits=8, decimal_places=3)
+	walks_per_nine = models.DecimalField(max_digits=8, decimal_places=3)
+	nh =  models.IntegerField()
+	pg =  models.IntegerField()
+	save_percentage = models.DecimalField(max_digits=8, decimal_places=3)
+	ira =  models.IntegerField()
+	qs =  models.IntegerField()
+	bsv =  models.IntegerField()
+	nsv =  models.IntegerField()
 
 
 
-# class Daily(models.Model):
-# 	game = models.ForeignKey(Game)
-# 	winner = models.ForeignKey(Team)
+#the picked winner for each game for each player
+class picks(models.Model):
+	user = models.ForeignKey(User)
+	league_game = models.ForeignKey(League_Game)
+	winner = models.ForeignKey(Team)
+	batter = models.ForeignKey(Batter)
+	pitcher = models.ForeignKey(Pitcher)
 
-# 	def __unicode__(self):
-# 		return u'%s', self.winner
 
-
-# class User_To_Daily(models.Model):
-# 	user = models.ForeignKey(User)
-# 	daily =  models.ForeignKey(Daily)
-
-# class Weekly(models.Model):
-# 	start_date = models.DateField()
-# 	user1 = models.ForeignKey(User, related_name='+')
-# 	user2 = models.ForeignKey(User, related_name='+')
-# 	monday = models.ForeignKey(Daily, related_name='+')
-# 	tuesday = models.ForeignKey(Daily, related_name='+')
-# 	wednesday = models.ForeignKey(Daily, related_name='+')
-# 	thursday = models.ForeignKey(Daily, related_name='+')
-# 	friday = models.ForeignKey(Daily, related_name='+')
-# 	saturday = models.ForeignKey(Daily, related_name='+')
-# 	sunday = models.ForeignKey(Daily, related_name='+')
