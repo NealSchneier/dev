@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 
-<form method="post">
 {% block content %}
+<form method="post">
+
 {% csrf_token %}
 
     <label>League</label>
     <input id="name" type="text" name="name" maxlength="20" /><br />
 
     <input type="submit" value="Submit" />
-{% endblock %}
+
 </form>
+
+{% endblock %}

@@ -7,7 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     #url(r'^weekly$', 'fantasy.views.weekly'),
-    url(r'^teams$', 'fantasy.views.teams'),
+    url(r'^teams/$', 'fantasy.views.teams'),
     url(r'^scoreboards/date/(\d{8})/$', 'fantasy.views.scoreboards'),
     url(r'^game/name/(\d+)/$', 'fantasy.views.league'),
     url(r'^game/date/(\d{8})/$', 'fantasy.views.game'),
@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^addLeague/$', 'fantasy.views.add_league'),
     url(r'^user/(\d{8})/daily/(\d{8})/$', 'fantasy.views.daily_picks'),
     url(r'^temp/$','fantasy.views.temp'),
+    url(r'^logout/$','fantasy.views.logout_view'),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

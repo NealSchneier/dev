@@ -1,4 +1,7 @@
 {% extends "base.html" %}
-{% for scoreboard in scoreboards %}
-    {{ scoreboard.home_fantasy_team_id }} <br />
-{% endfor %}
+
+{% block content %}
+    {% for scoreboard in scoreboards %}
+        {{ scoreboard.home_fantasy_team_id }} <br />
+    {% endfor %}
+{% endblock %}

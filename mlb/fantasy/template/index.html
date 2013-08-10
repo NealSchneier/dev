@@ -5,4 +5,24 @@
         <p>This template is written entirely in <strong>HTML5</strong> and <strong>CSS3</strong>. The photos shown in this template were taken by me. You can view more free CSS3 web templates <a href="http://www.css3templates.co.uk">here</a>.</p>
         <p>This template is a fully documented 5 page website, with an <a href="examples.html">examples</a> page that gives examples of all the styles available with this design. There is also a working PHP contact form on the contact page. All of the photos were taken by me - use as you wish.</p>
 
+
+
+
+<form method="post">
+
+{% csrf_token %}
+    <label>Username</label>
+    <input id="username" type="text" name="username" maxlength="30" /><br />
+    <br/>
+    <label>Password</label>
+    <input id="password" type="password" name="password" maxlength="128" /><br />
+
+    <input type="submit" value="Submit" />
+
+</form>
+
+<br/>
+<br/>
+<a href="/user"><input type="button" name="add_user" id="add_user" value='Add User'/></a>
+
 {% endblock %}

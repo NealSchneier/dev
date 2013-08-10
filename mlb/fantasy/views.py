@@ -4,6 +4,8 @@ from django.shortcuts import render, render_to_response
 from django.template.loader import get_template
 from models import Team, Scoreboard, Game, League, League_Games, League_Game, picks
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import redirect
 
 def teams(request):
     template = get_template('teams.html')
@@ -12,24 +14,31 @@ def teams(request):
     return HttpResponse(html)
 
 def scoreboards(request, offset):
-    #scores from the game
-    date = offset [:4] + "-" + offset[4:6] + "-" + offset[6:8] + "%"
-    template = get_template('scoreboards.html')
-    scoreboards = Scoreboard.objects.raw('select scoreboard.id,  t1.full_name home, t2.full_name away '
-        + 'from fantasy_scoreboard scoreboard join fantasy_team t1 on (scoreboard.home_fantasy_team_id '
-        + '= t1.id ) join fantasy_team t2 on (scoreboard.away_fantasy_team_id = t2.id) '
-        +'where scoreboard.start_date_time LIKE %s order by scoreboard.start_date_time',  date)
-    html = template.render(Context({'scoreboards': scoreboards}))
-    return HttpResponse(html)
+        print request.user
+        #scores from the game
+        date = offset [:4] + "-" + offset[4:6] + "-" + offset[6:8] + "%"
+        template = get_template('scoreboards.html')
+        scoreboards = Scoreboard.objects.raw('select scoreboard.id,  t1.full_name home, t2.full_name away '
+            + 'from fantasy_scoreboard scoreboard join fantasy_team t1 on (scoreboard.home_fantasy_team_id '
+            + '= t1.id ) join fantasy_team t2 on (scoreboard.away_fantasy_team_id = t2.id) '
+            +'where scoreboard.start_date_time LIKE %s order by scoreboard.start_date_time',  date)
+        html = template.render(Context({'scoreboards': scoreboards}))
+        return HttpResponse(html)
+
 
 def league(request, offset):
     #leage details
+    if !request.user.is_authenticated():
+        return redirect("/temp")
+
     template = get_template('league.html')
     league = League.objects.filter(id=offset)[:1].get()
     html = template.render(Context({'league': league}))
     return HttpResponse(html)
 
 def league_weekly(request, offset):
+    if !request.user.is_authenticated():
+        return redirect("/temp")
     #a league's weekly games
     template = get_template('weekly.html')
     league_weekly = League_Games.objects.select_related().get(id=offset)
@@ -67,6 +76,7 @@ def add_user(request):
         user = User.objects.create_user(user, email, password)
         user.is_staff = False
         user.save()
+        return redirect("/temp")
 
     html = render_to_response('user.html', None, RequestContext(request))
     return HttpResponse(html)
@@ -77,11 +87,11 @@ def add_league(request):
     #when the user has selected the form
     if request.method == 'POST':
         name = request.POST['name']
-
         league = League.objects.create()
         league.active = "Y"
         league.name = name
         league.save()
+        return redirect("/temp")
 
     html = render_to_response('addLeague.html', None, RequestContext(request))
     return HttpResponse(html)
@@ -104,7 +114,26 @@ def weekly_picks(request, user, date):
     return HttpResponse("")
 
 def temp(request):
-    template = get_template('index.html')
 
-    html = template.render(Context())
+    if request.method == 'POST':
+            user = login_view(request)
+            if user is not None:
+                login(request, user)
+                html =  render_to_response('index.html', None, RequestContext(request))
+            else:
+                return redirect('/teams')
+    if request.method == 'GET':
+            html = render_to_response('index.html', None, RequestContext(request))
     return HttpResponse(html)
+
+def logout_view(request):
+    logout(request)
+    return redirect('/temp')
+
+def login_view(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    return user
+
+

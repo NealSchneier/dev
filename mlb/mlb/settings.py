@@ -113,7 +113,8 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     #"/mlb/template",
-    "./fantasy/template"
+    "./fantasy/template",
+    "/home/neal/git/dev/mlb/fantasy/template/"
 )
 
 INSTALLED_APPS = (
