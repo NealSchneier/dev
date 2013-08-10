@@ -2,7 +2,7 @@ from django.http import HttpResponse, Http404
 from django.template import Context, RequestContext
 from django.shortcuts import render, render_to_response
 from django.template.loader import get_template
-from models import Team, Scoreboard, Game, League, League_Games, League_Game, picks
+from models import Team, Scoreboard, Game, League, League_Games, League_Game, picks, User
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
@@ -14,7 +14,6 @@ def teams(request):
     return HttpResponse(html)
 
 def scoreboards(request, offset):
-        print request.user
         #scores from the game
         date = offset [:4] + "-" + offset[4:6] + "-" + offset[6:8] + "%"
         template = get_template('scoreboards.html')
@@ -28,7 +27,7 @@ def scoreboards(request, offset):
 
 def league(request, offset):
     #leage details
-    if !request.user.is_authenticated():
+    if not request.user.is_authenticated() :
         return redirect("/temp")
 
     template = get_template('league.html')
@@ -37,7 +36,7 @@ def league(request, offset):
     return HttpResponse(html)
 
 def league_weekly(request, offset):
-    if !request.user.is_authenticated():
+    if not request.user.is_authenticated():
         return redirect("/temp")
     #a league's weekly games
     template = get_template('weekly.html')
@@ -117,13 +116,12 @@ def temp(request):
 
     if request.method == 'POST':
             user = login_view(request)
-            if user is not None:
-                login(request, user)
-                html =  render_to_response('index.html', None, RequestContext(request))
-            else:
+            if user is None:
                 return redirect('/teams')
-    if request.method == 'GET':
-            html = render_to_response('index.html', None, RequestContext(request))
+            else:
+                login(request, user)
+                authenticate_league(user)
+    html = render_to_response('index.html', None, RequestContext(request))
     return HttpResponse(html)
 
 def logout_view(request):
@@ -136,4 +134,6 @@ def login_view(request):
     user = authenticate(username=username, password=password)
     return user
 
+def authenticate_league(User):
+    league_data = League.objects.raw('select * from fantasy_league where active="Y" and (user1_id=%s or user2_id=%s or user3_id=%s or user4_id=%s or user5_id=%s or user6_id=%s or user7_id=%s or user8_id=%s or user9_id=%s or user10_id=%s or user11_id=%s or user12_id=%s )',  (User.id, User.id, User.id, User.id, User.id, User.id, User.id, User.id, User.id, User.id, User.id, User.id))
 
