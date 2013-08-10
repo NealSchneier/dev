@@ -14,38 +14,39 @@ def teams(request):
     return HttpResponse(html)
 
 def scoreboards(request, offset):
-        #scores from the game
-        date = offset [:4] + "-" + offset[4:6] + "-" + offset[6:8] + "%"
-        template = get_template('scoreboards.html')
-        scoreboards = Scoreboard.objects.raw('select scoreboard.id,  t1.full_name home, t2.full_name away '
-            + 'from fantasy_scoreboard scoreboard join fantasy_team t1 on (scoreboard.home_fantasy_team_id '
-            + '= t1.id ) join fantasy_team t2 on (scoreboard.away_fantasy_team_id = t2.id) '
-            +'where scoreboard.start_date_time LIKE %s order by scoreboard.start_date_time',  date)
-        html = template.render(Context({'scoreboards': scoreboards}))
-        return HttpResponse(html)
+    #scores from the game
+    date = offset [:4] + "-" + offset[4:6] + "-" + offset[6:8] + "%"
+    template = get_template('scoreboards.html')
+    scoreboards = Scoreboard.objects.raw('select scoreboard.id,  t1.full_name home, t2.full_name away '
+        + 'from fantasy_scoreboard scoreboard join fantasy_team t1 on (scoreboard.home_fantasy_team_id '
+        + '= t1.id ) join fantasy_team t2 on (scoreboard.away_fantasy_team_id = t2.id) '
+        +'where scoreboard.start_date_time LIKE %s order by scoreboard.start_date_time',  date)
+    html = template.render(Context({'scoreboards': scoreboards}))
+    return HttpResponse(html)
 
 
 def league(request, offset):
     #leage details
+    #check if user is logged in
     if not request.user.is_authenticated() :
         return redirect("/temp")
-
+    #check if user is in the current league
     template = get_template('league.html')
     league = League.objects.filter(id=offset)[:1].get()
     html = template.render(Context({'league': league}))
     return HttpResponse(html)
 
-def league_weekly(request, offset):
+def league_weekly(request, league, start_date):
     if not request.user.is_authenticated():
         return redirect("/temp")
     #a league's weekly games
     template = get_template('weekly.html')
-    league_weekly = League_Games.objects.select_related().get(id=offset)
+    league_weekly = League_Games.objects.select_related().get(league=league, start_date=start_date)
     html = template.render(Context({'weekly':league_weekly}))
     return HttpResponse(html)
 
 def game(request, offset):
-   # specific game details - before the game
+    # specific game details - before the game
     try:
         offset = str(offset)
     except ValueError:
@@ -136,4 +137,4 @@ def login_view(request):
 
 def authenticate_league(User):
     league_data = League.objects.raw('select * from fantasy_league where active="Y" and (user1_id=%s or user2_id=%s or user3_id=%s or user4_id=%s or user5_id=%s or user6_id=%s or user7_id=%s or user8_id=%s or user9_id=%s or user10_id=%s or user11_id=%s or user12_id=%s )',  (User.id, User.id, User.id, User.id, User.id, User.id, User.id, User.id, User.id, User.id, User.id, User.id))
-
+    return league_data
