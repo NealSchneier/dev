@@ -12,6 +12,7 @@
 </head>
 
 <body>
+  {% load url from future %}
   <div id="main">
     <header>
       <div id="logo">
@@ -25,11 +26,11 @@
           <li class="selected"><a href="/temp">Home</a></li>
           <li><a href="#">League</a>
             <ul>
-              <li><a href="/leagueStandings">League Standings</a></li>
+              <li><a href={% url 'fantasy.views.add_league' %}>League Standings</a></li>
               <li><a href="/messages">Messages</a></li>
               <li><a href="#">Scoring and Settings</a></li>
               <li><a href="#">Email League</a></li>
-              <li><a href="#">Head to Head Stats</a></li>
+              <li><a href={% url 'fantasy.views.scoreboards' 20130614 %}>Head to Head Stats</a></li>
             </ul>
           </li>
           <li><a href="page.html">My Team</a>

@@ -15,7 +15,8 @@ def teams(request):
 
 def scoreboards(request, offset):
     #scores from the game
-    date = offset [:4] + "-" + offset[4:6] + "-" + offset[6:8] + "%"
+    date = request.offset [:4] + "-" + request.offset[4:6] + "-" + request.offset[6:8] + "%"
+
     template = get_template('scoreboards.html')
     scoreboards = Scoreboard.objects.raw('select scoreboard.id,  t1.full_name home, t2.full_name away '
         + 'from fantasy_scoreboard scoreboard join fantasy_team t1 on (scoreboard.home_fantasy_team_id '
