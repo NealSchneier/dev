@@ -1,5 +1,5 @@
 from django.contrib import admin
-from fantasy.models import Game, Pitcher, Batter_Totals, Batter, Scoreboard, League, Team, Site, Surface, League_Games
+from fantasy.models import Game, Pitcher, Batter_Totals, Batter, Scoreboard, League, Team, Site, Surface, League_Games, Batter_Points, Pitcher_Points
 
 admin.site.register(Game)
 admin.site.register(Pitcher)
@@ -11,5 +11,7 @@ admin.site.register(Team)
 admin.site.register(Site)
 admin.site.register(Surface)
 admin.site.register(League_Games)
+admin.site.register(Batter_Points)
+admin.site.register(Pitcher_Points)
 #admin.site.register(Picks)
 

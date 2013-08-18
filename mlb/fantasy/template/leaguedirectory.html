@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% for league in leagues %}
+        {{ league.name }} <br />
+    {% endfor %}
+
+{% endblock %}

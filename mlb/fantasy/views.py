@@ -1,11 +1,13 @@
 from django.http import HttpResponse, Http404
 from django.template import Context, RequestContext
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, get_object_or_404
 from django.template.loader import get_template
-from models import Team, Scoreboard, Game, League, League_Games, League_Game, picks, User
+from models import Team, Scoreboard, Game, League, League_Games, League_Game, picks, User, Batter_Points, Pitcher_Points
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
+from django.core.urlresolvers import reverse
+import datetime
 
 def teams(request):
     template = get_template('teams.html')
@@ -15,15 +17,21 @@ def teams(request):
 
 def scoreboards(request, offset):
     #scores from the game
-    date = request.offset [:4] + "-" + request.offset[4:6] + "-" + request.offset[6:8] + "%"
+
+    date = offset [:4] + "-" + offset[4:6] + "-" + offset[6:8] + "%"
 
     template = get_template('scoreboards.html')
     scoreboards = Scoreboard.objects.raw('select scoreboard.id,  t1.full_name home, t2.full_name away '
         + 'from fantasy_scoreboard scoreboard join fantasy_team t1 on (scoreboard.home_fantasy_team_id '
         + '= t1.id ) join fantasy_team t2 on (scoreboard.away_fantasy_team_id = t2.id) '
         +'where scoreboard.start_date_time LIKE %s order by scoreboard.start_date_time',  date)
+
     html = template.render(Context({'scoreboards': scoreboards}))
     return HttpResponse(html)
+
+def scoreboards_recent(request):
+    #redirects with current date
+    return redirect("scoreboards_date", datetime.date.today().strftime("%Y%m%d"))
 
 
 def league(request, offset):
@@ -139,3 +147,41 @@ def login_view(request):
 def authenticate_league(User):
     league_data = League.objects.raw('select * from fantasy_league where active="Y" and (user1_id=%s or user2_id=%s or user3_id=%s or user4_id=%s or user5_id=%s or user6_id=%s or user7_id=%s or user8_id=%s or user9_id=%s or user10_id=%s or user11_id=%s or user12_id=%s )',  (User.id, User.id, User.id, User.id, User.id, User.id, User.id, User.id, User.id, User.id, User.id, User.id))
     return league_data
+
+def is_league_authenticated():
+    print
+    #this would be used similar to is_authenticated
+
+def scoring_and_settings(request, league):
+    #add authentication to for both user and determine
+    print
+
+def leaguedirectory(request):
+    template = get_template('leaguedirectory.html')
+    league = League.objects.select_related()
+    html = template.render(Context({'leagues':league}))
+    return HttpResponse(html)
+
+def leaguedetails(request, offset):
+    #add form so that the details can be edited
+    template = get_template('leaguedetails.html')
+    league = League.objects.select_related().get(id=offset)
+    html = template.render(Context({'league':league}))
+    return HttpResponse(html)
+
+def leaguescoring(request, offset):
+    #add form so that the details can be edited
+    template = get_template('leaguescoring.html')
+    batter_points = Batter_Points.objects.select_related().get(league=offset)
+    pitcher_points = Pitcher_Points.objects.select_related().get(league=offset)
+
+
+    html = template.render(Context({'batter_points':batter_points, 'pitcher_points':pitcher_points}))
+    return HttpResponse(html)
+
+def edit_leaguedetails(request, offset):
+    print
+
+def edit_leaguescoring(request, offset):
+    print
+

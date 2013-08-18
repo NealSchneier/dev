@@ -1,6 +1,8 @@
 {% extends "base.html" %}
-<form method="post">
 {% block content %}
+
+<form method="post">
+
 {% csrf_token %}
     <label>Username</label>
     <input id="user" type="text" name="user" maxlength="30" /><BR />
@@ -12,5 +14,6 @@
     <input id="password" type="text" name="password" maxlength="128" /><br />
 
     <input type="submit" value="Submit" />
-{% endblock %}
+
 </form>
+{% endblock %}
