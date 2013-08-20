@@ -171,17 +171,17 @@ def leaguedetails(request, offset):
 
 def leaguescoring(request, offset):
     #add form so that the details can be edited
-    template = get_template('leaguescoring.html')
-    batter_points = Batter_Points.objects.select_related().get(league=offset)
-    pitcher_points = Pitcher_Points.objects.select_related().get(league=offset)
 
+    if request.method == 'GET':
+        template = get_template('leaguescoring.html')
+        batter_points = Batter_Points.objects.select_related().get(league=offset)
+        pitcher_points = Pitcher_Points.objects.select_related().get(league=offset)
+        html = template.render(Context({'batter_points':batter_points, 'pitcher_points':pitcher_points}))
+    elif request.method == 'POST':
+        #batter points
+        gp = request.POST['gp']
 
-    html = template.render(Context({'batter_points':batter_points, 'pitcher_points':pitcher_points}))
+        #pitcher points
+        app = request.POST['app']
     return HttpResponse(html)
-
-def edit_leaguedetails(request, offset):
-    print
-
-def edit_leaguescoring(request, offset):
-    print
 
