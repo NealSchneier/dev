@@ -1,0 +1,20 @@
+{
+    "_class": "OAuth2Credentials",
+    "_module": "oauth2client.client",
+    "access_token": "ya29.1.AADtN_UA1D-B2_Oj_1I4lDJqm-ZTKFTxkQfR6mDQSRWR0F9kfPsPkzGhUFMvv_UZaQ",
+    "client_id": "977739430087-iul45rh0o6qjp6bq3sdhhrjuth5f61rv.apps.googleusercontent.com",
+    "client_secret": "7TI2GD3ANT537Yyi_yF0fwM-",
+    "id_token": null,
+    "invalid": false,
+    "refresh_token": "1/mmefqp8QlzSQDQ-qDuEM7dtORA2OPAyKX0NqReqBy2c",
+    "revoke_uri": "https://accounts.google.com/o/oauth2/revoke",
+    "token_expiry": "2014-03-15T02:30:37Z",
+    "token_response": {
+        "access_token": "ya29.1.AADtN_UA1D-B2_Oj_1I4lDJqm-ZTKFTxkQfR6mDQSRWR0F9kfPsPkzGhUFMvv_UZaQ",
+        "expires_in": 3600,
+        "refresh_token": "1/mmefqp8QlzSQDQ-qDuEM7dtORA2OPAyKX0NqReqBy2c",
+        "token_type": "Bearer"
+    },
+    "token_uri": "https://accounts.google.com/o/oauth2/token",
+    "user_agent": "wardrobe-system/1"
+}
