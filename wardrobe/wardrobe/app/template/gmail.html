@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+    
+    {% for message in messages %}
+        {{ message.from }} <br />
+        {{ message.to }} <br />
+        {{ message.subject }} <br />
+       	{% autoescape off %} 
+       		{{ message.payload }} 
+       	{% endautoescape %}<br />
+    {% endfor %}
+
+{% endblock %}

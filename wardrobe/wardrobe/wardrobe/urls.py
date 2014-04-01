@@ -6,12 +6,12 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-     url(r'^$', 'wardrobe.views.home', name='home'),
-     url(r'^wardrobe/', include('wardrobe.foo.urls')),
-
+     url(r'^$', 'app.views.home', name='home'),
+     #url(r'^wardrobe/', include('wardrobe.foo.urls')),
+     url(r'^gmail', 'app.views.gmail'),
     # Uncomment the admin/doc line below to enable admin documentation:
-     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-     url(r'^admin/', include(admin.site.urls)),
+    # url(r'^admin/', include(admin.site.urls)),
 )

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+	<form method="POST">
+
+		{% csrf_token %}
+		Username:<input type="text" id="gmailusername" name="gmailusername"><br/><br/>
+		Passwoard:<input type="password" id="gmailpassword" name="gmailpassword"><br/>
+		<input type="submit">
+	</form>
+{% endblock %}
