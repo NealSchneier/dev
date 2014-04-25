@@ -2,7 +2,14 @@ import imaplib
 from email.parser import HeaderParser
 from HTMLParser import HTMLParser
 from django.http import HttpResponse
-from  HTMLtoJSONParser import HTMLtoJSONParser
+from HTMLtoJSONParser import HTMLtoJSONParser
+from htmlentitydefs import name2codepoint
+from MyHTMLParser import MyHTMLParser
+from bs4 import BeautifulSoup
+import webbrowser
+import urllib2 as urllib
+import cStringIO
+import PIL
 
 class Gmail:
 	
@@ -18,17 +25,31 @@ class Gmail:
         messages = []
         for num in data[0].split():
             typ, data = self.m.fetch(num, '(RFC822)')
-            #print 'Message %s\n%s\n' % (num, data[0][1])
             msg = HeaderParser().parsestr(data[0][1])
             payload = msg.get_payload()
             payload = self.parsePayload(payload)
-            #payload = HTMLtoJSONParser.to_json(payload)
+            
             messages.append({"from":msg['From'], "to":msg['To'], "subject":msg['Subject'], "payload":payload})
+            soup = BeautifulSoup(payload)
+            #print(soup.prettify())
+            #for link in soup.find_all('a'):
+            #    print(link.get('href'))
 
-            # print msg['From']
-            # print msg['To']
-            # print msg['Subject']
-            # print msg.get_payload()
+            #for link in soup.find_all('img'):
+                #webbrowser.open(link.get('src'))
+
+            for meta in soup.find_all('meta'):
+                if meta.get('itemprop') == 'orderNumber':
+                    print meta.get('content')
+                elif meta.get('itemprop') == 'price':
+                    print meta.get('content')
+                elif meta.get('itemprop') == 'image':
+                    file = open(num, 'w+')
+                    #file.write(meta.get('content'))
+                    file = cStringIO.StringIO(urllib.urlopen(meta.get('content')).read())
+                    img = Image.open(file)
+                
+
         return messages    
 
     def getSquare(self):
@@ -68,12 +89,12 @@ class Gmail:
         # string = string.replace("= ","")
         string = string.replace("=\r\n","")
         string = string.replace('3D"', '"')
-
-        print string
+        string = string.replace('=3D', '=')
         return string
 
   	def closeGmail(self):
   		self.m.close()
 		self.m.logout()
+
 
     

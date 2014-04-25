@@ -1,0 +1,500 @@
+    3  /usr/local/mysql/bin/mysqladmin -u root password metsfan
+    4  mysql
+    5  /usr/local/mysql/bin/mysql -u root -p
+    6  export $PATH
+    7  echo $PATH
+    8  export PATH=$PATH:/usr/local/
+    9  export PATH=$PATH:/usr/local/mysql/bin/
+   10  mysql
+   11  mysql -u root -p
+   12  vim
+   13  ls
+   14  cd git/dev/wardrobe/wardrobe/
+   15  ls
+   16  python manage.py migrate
+   17  python manage.py
+   18  python manage.py syncdb
+   19  python manage.py
+   20  python manage.py sql
+   21  python manage.py
+   22  python manage.py createsuperuser
+   23  python manage.py
+   24  python manage.py dbshell
+   25  mysqldb
+   26  pip install MySQL-python
+   27  sudo pip install MySQL-python
+   28  python -version
+   29  python -v
+   30  python
+   31  sudo pip install mysql-python
+   32  sudo easy_install python-mysqldb
+   33  sudo pip install mysql-python
+   34  sudo /Library/StartupItems/MySQLCOM/MySQLCOM stop
+   35  ls
+   36  ls
+   37  exit
+   38  ls
+   39  cd dev/wardrobe/wardrobe/
+   40  python manage.py runserver
+   41  python manage.py runserver
+   42  ls
+   43  vim wardrobe/settings.py
+   44  mysqldb
+   45  mysql
+   46  export $PATH
+   47  export PATH
+   48  export $PATH
+   49  python manage.py runserver
+   50  pwd
+   51  python manage.py runserver
+   52  ls
+   53  vim wardrobe/settings.py
+   54  ls
+   55  python manage.py runserver
+   56  clear
+   57  python manage.py runserver
+   58  python manage.py runserver &
+   59  clear
+   60  jobs
+   61  fg
+   62  ls
+   63  safari
+   64  ls
+   65  cd dev/wardrobe/wardrobe/
+   66  vim play.json 
+   67  vim play.json 
+   68  vim play.json 
+   69  ls
+   70  vim play.json 
+   71  ls
+   72  ls
+   73  clear
+   74  ls
+   75  vim play.json 
+   76  python -m json.tool
+   77  vim play.json 
+   78  vim play.json 
+   79  simplejson
+   80  sudo pip install simplejson
+   81  uname -a
+   82  ls
+   83  vim play.json 
+   84  ls -a
+   85  ls -l
+   86  ls
+   87  vim play2.json 
+   88  rm play.json 
+   89  vim play2.json 
+   90  git clone https://github.com/victorporof/Sublime-HTMLPrettify.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/Sublime-HTMLPrettify
+   91  sudo easy_install node
+   92  node
+   93  npm
+   94  sudo easy_install npm
+   95  ls
+   96  sudo pip install  npm
+   97  sudoinstall  npm
+   98  sudo install  npm
+   99  sudo install npm
+  100  pip install npm
+  101  ls
+  102  rm html.html 
+  103  vim play2.
+  104  ls
+  105  vim play2.html 
+  106  vim play2.html 
+  107  ls
+  108  vim play2.html 
+  109  ls
+  110  vim play2.html 
+  111  vim play2.html 
+  112  vim play2.html 
+  113  vim play2.html 
+  114  vim play2.html 
+  115  vim play2.html 
+  116  vim play2.html 
+  117  ip
+  118  curl
+  119  ls
+  120  python
+  121  exit
+  122  sudo pip install pypwsafe
+  123  sudo pip install libmcrypt-devel
+  124  ls
+  125  cd dev/wardrobe/wardrobe/
+  126  mysql
+  127  mysqld
+  128  mysqldb
+  129  mysql -u root -p
+  130  q
+  131  ls
+  132  ps a | grep mysql
+  133  ps a | grep mysql
+  134  ps a | grep mysql
+  135  ps A | grep mysql
+  136  mysql
+  137  ps A | grep mysql
+  138  ps A | grep mysql
+  139  kill -9 139
+  140  sudo kill -9 139
+  141  ps A | grep mysql
+  142  suod kill -9 203
+  143  sudo kill -9 203
+  144  ps A | grep mysql
+  145  ps A | grep mysql
+  146  ps A | grep mysql
+  147  ps A | grep mysql
+  148  mysql
+  149  MySqlDb
+  150  /Applications/djangostack-1.5.5-2/mysql/tmp/mysql.sock -u bitnami -p
+  151  sudo /Applications/djangostack-1.5.5-2/mysql/tmp/mysql.sock -u bitnami -p
+  152  sudo /Applications/djangostack-1.5.5-2/mysql/tmp/mysql -u root -p
+  153  /Applications/djangostack-1.5.5-2/mysql/tmp/mysql -u root -p
+  154  ls
+  155  ps a | grep mysql
+  156  ps a | grep mysql
+  157  cd /Applications/djangostack-1.5.5-2/apps/django/django_projects/wardrobe/
+  158  python manage.py runserver
+  159  cd ..
+  160  ls
+  161  cd ..
+  162  ls
+  163  cd ..
+  164  ls
+  165  cd ..
+  166  ls
+  167  vim README.txt 
+  168  pwd
+  169  ls
+  170  find -name settings.py
+  171  man find
+  172  find settings.py
+  173  find -r settings.py
+  174  man find
+  175  find -name settings.py
+  176  find settings.py
+  177  find settings.py -name
+  178  find settings.py
+  179  find manage.py
+  180  ls
+  181  more find
+  182  find more
+  183  man find
+  184  find -follow settings.py
+  185  find -f settings.py
+  186  find -R settings.py
+  187  find -r settings.py
+  188  ls
+  189  cd apps/django/django_projects/wardrobe/
+  190  vim wardrobe/settings.py
+  191  python manage.py runserver
+  192  python manage.py runserver
+  193  python manage.py runserver
+  194  ps a | grep mysql
+  195  ps a | grep mysqldb
+  196  ps A | grep mysqldb
+  197  ps a
+  198  ps A
+  199  ps A | grep mysql
+  200  clear
+  201  ps A | grep mysql
+  202  python manage.py runserver
+  203  df
+  204  top
+  205  python manage.py runserver
+  206  mysql
+  207  mysql -u root -p
+  208  ps a | grep mysql
+  209  ps a | grep "mysql"
+  210  ps A | grep "mysql"
+  211  ps a
+  212  ps A
+  213  ps A | grep "mysql"
+  214  kill -9 9550
+  215  sudo /Library/StartupItems/MySQLCOM/MySQLCOM start
+  216  mysql -u root -p
+  217  mysql
+  218  /Library/StartupItems/MySQLCOM/MySQLCOM 
+  219  /usr/local/mysql/bin/mysql
+  220  ls
+  221  /usr/local/mysql/bin/mysql -u root -p
+  222  /usr/local/mysql/bin/mysql -u root -P
+  223  /usr/local/mysql/bin/mysql -u root 
+  224  /usr/local/mysql/bin/mysql -u root -p
+  225  ls
+  226  cd dev/wardrobe/wardrobe/
+  227  python manage.py runserver
+  228  mysql
+  229  alias mysql='/usr/local/mysql/bin/mysql'
+  230  mysql -u root -p
+  231  python manage.py runserver
+  232  ls
+  233  mysqld
+  234  mysqldb
+  235  ls
+  236  python manage.py runserver
+  237  python manage.py runserver
+  238  python manage.py runserver
+  239  python manage.py runserver
+  240  python manage.py runserver
+  241  mysql
+  242  sudo easy_install mysql
+  243  sudo easy_install mysqldb
+  244  ls
+  245  python manage.py runserver
+  246  python manage.py runserver
+  247  mysql
+  248  mysql -u root -p
+  249  python manage.py runserver
+  250  mysql
+  251  mysql -u root -p
+  252  exit
+  253  mysql
+  254  vim /usr/local/mysql/
+  255  find -name setup_posix.py
+  256  mysql
+  257  gcc
+  258  cd /Users/neal/Downloads/
+  259  tar xzvf MySQL-python-1.2.3.tar.gz 
+  260  ls
+  261  ls
+  262  ls
+  263  mv MySQL-python-1.2.3/ ../Library/
+  264  cd ../Library/
+  265  ls
+  266  cd MySQL-python-1.2.3/
+  267  sudo python setup.py clean
+  268  ls
+  269  cd ..
+  270  ls
+  271  mv MySQL-python-1.2.3/ ../Downloads/
+  272  cd ../Downloads/
+  273  cd MySQL-python-1.2.3
+  274  sudo python setup.py clean
+  275  locate mysql-config
+  276  which mysql-config
+  277  export $PATH
+  278  export PATH=$PATH:/usr/local/mysql/bin/
+  279  mysql
+  280  mysql -u root -p
+  281  ls
+  282  ps A
+  283  ps A | grep "mysql"
+  284  mysql
+  285  pwd
+  286  LS
+  287  CD ..
+  288  LS
+  289  cd ..
+  290  ls
+  291  pwd
+  292  cd MySQL-python-1.2.4/
+  293  sudo python setup.py clean
+  294  local mysql_config
+  295  locate mysql_config
+  296  sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+  297  locate mysql_config
+  298  locate mysql_config
+  299  sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+  300  locate mysql_config
+  301  sudo pip install mysql
+  302  sudo pip install python-mysql
+  303  vim /etc/paths
+  304  sudo vim /etc/paths
+  305  mysql -u root -p
+  306  echo $PATH
+  307  sudo pip install mysql-connector-python
+  308  sudo pip install libmysqlclient
+  309  mysql
+  310  pwd
+  311  python manage.py runserver
+  312  pwd
+  313  echo $PATH
+  314  export PATH=$PATH:/usr/local/mysql/bin/
+  315  echo $PATH
+  316  ls
+  317  python manage.py runserver
+  318  mysql -u root -p
+  319  python manage.py runserver
+  320  echo $PATH
+  321  echo $PATH
+  322  mysql -u root -p
+  323  python manage.py runserver
+  324  sudo pip install mysqll-python
+  325  sudo pip install mysql-python
+  326  vim /Users/neal/Library/Logs/pip.log 
+  327  sudo pip install mysqldb-python
+  328  sudo pip install mysql-python
+  329  python manage.py runserver
+  330  python manage.py runserver
+  331  mysql -u root -p
+  332  python manage.py runserver
+  333  locate mysql
+  334  python manage.py runserver
+  335  python manage.py runserver
+  336  cd dev/wardrobe/wardrobe/
+  337  python manage.py runserver
+  338  mysql -u root -p
+  339  mysql -u root -p
+  340  ls /usr/local/mysql-5.1.73-osx10.6-x86_64/bin/
+  341  /usr/local/mysql-5.1.73-osx10.6-x86_64/bin/
+  342  export PATH=$PATH:/usr/local/mysql-5.1.73-osx10.6-x86_64/bin/
+  343  mysql -u root -p
+  344  python manage.py runserver
+  345  echo $PATh
+  346  echo $PATH
+  347  vim /etc/paths
+  348  sudo vim /etc/paths
+  349  sudo vim /etc/paths
+  350  echo $PATH
+  351  cd dev/wardrobe/wardrobe/
+  352  python manage.py runserver
+  353  python manage.py runserver
+  354  clear
+  355  f
+  356  echo $PATh
+  357  echo $PATH
+  358  mysql -u root -p
+  359  pwd
+  360  cd dev/wardrobe/wardrobe/
+  361  python manage.py runserver
+  362  python manage.py runserver
+  363  mysql -u root -p
+  364  sudo easy_install MySQL-python
+  365  sudo pip install MySQL-python
+  366  export CFLAGS=-Qunused-arguments
+  367  export CPPFLAGS=-Qunused-arguments
+  368  sudo pip install MySQL-python
+  369  sudo export CFLAGS=-Qunused-arguments
+  370   export CFLAGS=-Qunused-arguments
+  371  export CPPFLAGS=-Qunused-arguments
+  372  export CFLAGS=-Qunused-arguments export CPPFLAGS=-Qunused-arguments
+  373  sudo pip install MySQL-python
+  374  echo $CFLAGS
+  375  sudo easy_install MySQL-python
+  376  sudo pip install psycogp2
+  377  sudo -E pip install MySQL-python
+  378  mysql -u root -p
+  379  python manage.py runserver
+  380  python manage.py runserver
+  381  python manage.py runserver
+  382  curl
+  383  curl http://www.shopstyle.com/browse/womens-clothes
+  384  python
+  385  python
+  386  ls
+  387  cd ..
+  388  ls
+  389  cd ..
+  390  ls
+  391  pwd
+  392  cd wardrobe/wardrobe/app/
+  393  ls
+  394  python shopstyle.py 
+  395  python shopstyle.py 
+  396  python shopstyle.py 
+  397  python shopstyle.py 
+  398  python shopstyle.py 
+  399  python shopstyle.py 
+  400  python shopstyle.py 
+  401  python shopstyle.py 
+  402  python shopstyle.py 
+  403  python shopstyle.py 
+  404  python shopstyle.py 
+  405  python shopstyle.py 
+  406  python shopstyle.py 
+  407  python shopstyle.py 
+  408  python shopstyle.py 
+  409  clear
+  410  clear
+  411  python shopstyle.py 
+  412  python shopstyle.py 
+  413  python shopstyle.py 
+  414  python shopstyle.py 
+  415  python shopstyle.py 
+  416  python shopstyle.py 
+  417  python shopstyle.py 
+  418  python shopstyle.py 
+  419  python shopstyle.py 
+  420  python shopstyle.py 
+  421  python shopstyle.py 
+  422  python shopstyle.py 
+  423  python shopstyle.py 
+  424  ipconfig
+  425  ifconfig
+  426  echo $PATH
+  427  mysql -u root -p
+  428  ls
+  429  cd dev/wardrobe/wardrobe/
+  430  python manage.py runserver
+  431  sudo easy_install mysql-python
+  432  sudo easy_install python-mysqldb
+  433  sudo easy_install python-mysqldb
+  434  mysql -u root -p
+  435  sudo easy_install beautifulsoup4
+  436  curl "http://support.google.com/wallet/?hl=3Den_US"
+  437  curl "http://support.google.com/wallet/?hlen_US"
+  438  curl "http://support.google.com/wallet/?hl=en_US"
+  439  curl "http://support.google.com/wallet/?hl=3Den_US"
+  440  curl "http://support.google.com/wallet/?hl=en_US"
+  441  curl "https://play.google.com/?feature=3Dgp_receipt"
+  442  curl "https://play.google.com/?feature=gp_receipt"
+  443  pwd
+  444  ls
+  445  vim 12745 
+  446  rm 12745 
+  447  ls
+  448  vim 12745 
+  449  rm 12745 
+  450  sudo pip install Image
+  451  sudo easy_install image
+  452  sudo easy_install PIL
+  453  sudo easy_install PIL
+  454  sudo pip PIL
+  455  sudo pip install PIL
+  456  sudo pip install Image
+  457  vim /Users/neal/Library/Logs/pip.log 
+  458  sudo easy_install pil
+  459  pillow
+  460  sudo easy_install pillow
+  461  sudo pip install pillow
+  462  xcode-select --install
+  463  xport ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"
+  464  export ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"
+  465  sudo pip install pillow
+  466  pip install pil --allow-external pil --allow-unverified pil
+  467  brew
+  468  bew tap HomeBrew/python
+  469  brew tap HomeBrew/python
+  470  sudo easy_install PIL
+  471  echo $CFLAGS
+  472  export CFLAGS=-Qunused-arguments
+  473  export CPPFLAGS=-Qunused-arguments
+  474  sudo easy_install PIL
+  475  sudo pip install
+  476  sudo easy_install Image
+  477  export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install psycopg2
+  478  sudo easy_install Image
+  479  sudo easy_install Image
+  480  export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install Image
+  481  export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
+  482  sudo pip install Image
+  483  sudo easy_install Image
+  484  sudo export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install Image
+  485  su export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install Image
+  486  xcod
+  487  xcode
+  488  xcode
+  489  sudo easy_install Image
+  490  sudo easy_install PIL
+  491  sudo easy_install 
+  492  sudo easy_install pillow
+  493  echo $CFLAGS
+  494  echo $CPPFLAGS
+  495  su export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install Image
+  496  sudo pip install Image
+  497  pip install pil --allow-external pil --allow-unverified pil
+  498  pwd
+  499  cd dev/wardrobe/wardrobe/
+  500  python manage.py runserver
+  501  pip install pil --allow-external pil --allow-unverified pil
+  502  history > temp

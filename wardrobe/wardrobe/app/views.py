@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 from django.template.loader import get_template
 
 from noncertGmail import Gmail
+import json
 
 # Create your views here.
 def home(request):
@@ -16,9 +17,9 @@ def home(request):
         password = request.POST['gmailpassword']
         gmail = Gmail(username, password)
         msgData = gmail.getGooglePlay()
-        msgData = msgData + gmail.getAmazon()
-        msgData = msgData + gmail.getSquare()
-
+        #msgData = msgData + gmail.getAmazon()
+        #msgData = msgData + gmail.getSquare()
+        
 
         template = get_template('gmail.html')
     	html = template.render(Context({'messages': msgData}))
