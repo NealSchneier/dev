@@ -23,7 +23,7 @@ for i in industry:
 	
 	try:
 		html = response.read()
-		con = db.connect('finance.c0yndj7oh9sl.us-west-2.rds.amazonaws.com', 'neal', 'Metsfan8669', 'finance')
+		con = db.connect('localhost', 'root', 'metsfan', 'finance')
 		#con = db.connect('localhost', 'root', 'metsfan', 'finance')
 
 		with con:
