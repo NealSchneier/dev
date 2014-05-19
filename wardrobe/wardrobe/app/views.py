@@ -16,7 +16,12 @@ def home(request):
         username = request.POST['gmailusername']
         password = request.POST['gmailpassword']
         gmail = Gmail(username, password)
-        msgData = gmail.getGooglePlay()
+        msgData = ""
+        try:
+            msgData = gmail.getGooglePlay()
+        except:
+            html = render_to_response('user.html', None, RequestContext(request))
+            return HttpResponse(html)
         #msgData = msgData + gmail.getAmazon()
         #msgData = msgData + gmail.getSquare()
         

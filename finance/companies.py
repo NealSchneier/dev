@@ -21,11 +21,8 @@ static = ".csv"
 
 for i in industry:
 	response = urllib2.urlopen(url + str(i) + sort + direction + static)
-<<<<<<< HEAD
 
-=======
 	print url + str(i) + sort + div_yield_percention + static
->>>>>>> 428b3686b7c1e194c3b28b47c9a1d163898062ed
 	try:
 		html = response.read()
 		con = db.connect('localhost', 'root', 'metsfan', 'finance')

@@ -9,16 +9,18 @@ from bs4 import BeautifulSoup
 import webbrowser
 import urllib2 as urllib
 import cStringIO
-import PIL
+from PIL import Image
 
 class Gmail:
 	
     def __init__(self, username, password):
         self.username = username
         self.password = password
+
         self.m = imaplib.IMAP4_SSL('imap.gmail.com')
         self.m.login(username, password)
         self.m.select()
+
 
     def getGooglePlay(self):
         typ, data = self.m.search(None, '(FROM "googleplay-noreply@google.com")')
@@ -34,21 +36,17 @@ class Gmail:
             #print(soup.prettify())
             #for link in soup.find_all('a'):
             #    print(link.get('href'))
-
             #for link in soup.find_all('img'):
-                #webbrowser.open(link.get('src'))
-
+            #    webbrowser.open(link.get('src'))
             for meta in soup.find_all('meta'):
                 if meta.get('itemprop') == 'orderNumber':
                     print meta.get('content')
                 elif meta.get('itemprop') == 'price':
                     print meta.get('content')
                 elif meta.get('itemprop') == 'image':
-                    file = open(num, 'w+')
-                    #file.write(meta.get('content'))
-                    file = cStringIO.StringIO(urllib.urlopen(meta.get('content')).read())
-                    img = Image.open(file)
-                
+                    f = open(msg['Subject'],'wb')
+                    f.write(urllib.urlopen(meta.get('content')).read())
+                    f.close()
 
         return messages    
 
