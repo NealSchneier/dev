@@ -1,6 +1,7 @@
 import urllib2
 import MySQLdb as db
 import csv
+import StringIO
 
 def convert(string):
 	string = string.upper()
@@ -47,10 +48,14 @@ def getCompanyId(symbol, databaseConnection):
 
 	except db.Error, e:
 	    print "Error %d: %s" % (e.args[0],e.args[1])
-	   
-def convertCSV(csvFile):
-	##with open(csvFile, 'rb') as csvfile:
-	#print csvFile
+
+##This takes a string, strips any possible null values from the end and returns
+## A dictionary of the string
+def convertCSV(csvString):
+
+
+	csvFile = StringIO.StringIO(csvString.rstrip('\0'))
+
 	return csv.DictReader(csvFile)
 #		for row in spamreader:
 #		print row
