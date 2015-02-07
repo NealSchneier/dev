@@ -1,5 +1,6 @@
 import urllib2
 import MySQLdb as db
+import csv
 
 def convert(string):
 	string = string.upper()
@@ -19,13 +20,14 @@ def addFormatting(position, value):
 
 #from symbol make request to get the name, match to the company table on db and return the company id
 
-def getCompanyId(symbol):
+def getCompanyId(symbol, databaseConnection):
 	url = "http://finance.yahoo.com/d/quotes.csv?s=" + symbol + addFormatting("f", "sn")
 	response = urllib2.urlopen(url)
 
 	html = response.read()
 	try:
-		con = db.connect('localhost', 'root', 'metsfan', 'finance2')
+		#con = db.connect('localhost', 'root', 'metsfan', 'finance2')
+		con = databaseConnection
 		with con:
 			cur = con.cursor()
 			cnt = html.count('\n')
@@ -46,8 +48,9 @@ def getCompanyId(symbol):
 	except db.Error, e:
 	    print "Error %d: %s" % (e.args[0],e.args[1])
 	   
-	finally:    
-	        
-	    if con:    
-	        con.close()
-
+def convertCSV(csvFile):
+	##with open(csvFile, 'rb') as csvfile:
+	#print csvFile
+	return csv.DictReader(csvFile)
+#		for row in spamreader:
+#		print row
