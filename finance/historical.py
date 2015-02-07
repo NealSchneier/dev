@@ -35,7 +35,7 @@ def getHistoricalQuotes(security, fromMonth, fromDay, fromYear, toMonth, toDay, 
 		with con:
 			cur = con.cursor()
 			cnt = html.count('\n')
-			companyId = getCompanyId(security)
+			companyId = getCompanyId(security, con)
 			
 			for x in range(cnt-1):
 				html = html.partition('\n')
@@ -73,5 +73,5 @@ def getHistoricalQuotes(security, fromMonth, fromDay, fromYear, toMonth, toDay, 
 	    if con:    
 	        con.close()
 
-print getHistoricalQuotes('IBM', '1', '1', '2009', '1', '1', '2010', 'w')
+#print getHistoricalQuotes('IBM', '1', '1', '2009', '1', '1', '2010', 'w')
 
