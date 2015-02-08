@@ -1,6 +1,4 @@
-import urllib2
-import MySQLdb as db
-from scriptUtils import convert, convertCSV
+from scriptUtils import convert, yahooFinanceAPIRequest
 from mysqlUtils import getMysqlConnection
 
 url = "http://biz.yahoo.com/p/csv/"
@@ -10,9 +8,9 @@ sort = "u"
 static = ".csv"
 
 try:
-	response = urllib2.urlopen(url + sector + properties + sort + static)
-
-	csvReader = convertCSV(response.read())
+	#response = urllib2.urlopen(url + sector + properties + sort + static)
+	csvReader = yahooFinanceAPIRequest(url + sector + properties + sort + static)
+	#csvReader = convertCSV(response.read())
 	
 except: 
 	print "Error with URL Request/ Converting CSV " +  url + sector + properties + sort + static
@@ -39,7 +37,7 @@ try:
 	with con:
 		cur = con.cursor()
 		for row in csvReader:
-			print 'select id from sector where name="' + row['Sectors'] + '"'
+			#print 'select id from sector where name="' + row['Sectors'] + '"'
 			cur.execute('select id from sector where name="' + row['Sectors'] + '"')
 		 	sectorId = cur.fetchone()
 			#print 'insert into sectors (sector, day_price_change, market_cap , price_to_earnings_ratio, roe_percent, div_yield_percent, debt_to_equity, price_to_book, net_profit_margin, price_to_free_cash_flow) values (' + str(sectorId[0]) + ', ' + row[1]+ ', ' + convert(row[2]) +', ' + row[3]+', ' + row[4]+', ' + row[5]+', ' + row[6]+', ' + row[7]+', ' + row[8]+', ' + row[9] +' );'

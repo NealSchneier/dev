@@ -1,4 +1,3 @@
-import urllib2
 import MySQLdb as db
 
 def getMysqlConnection():

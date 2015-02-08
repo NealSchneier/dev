@@ -53,9 +53,12 @@ def getCompanyId(symbol, databaseConnection):
 ## A dictionary of the string
 def convertCSV(csvString):
 
-
 	csvFile = StringIO.StringIO(csvString.rstrip('\0'))
 
 	return csv.DictReader(csvFile)
-#		for row in spamreader:
-#		print row
+
+#makes the URL request, and returns a dictionary of the response
+def yahooFinanceAPIRequest(urlString):
+	response = urllib2.urlopen(urlString)
+
+	return convertCSV(response.read())
