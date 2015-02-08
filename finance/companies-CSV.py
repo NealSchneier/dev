@@ -24,6 +24,13 @@ for i in industry:
 					cur.execute('insert into company (name) values ("' + row["Description"] + '")')
 					cur.execute('select id from company where name="' + row["Description"] + '"')
 					companyId = cur.fetchone()
+
+					#the insert the convert table
+					cur.execute('select id from companyToIndustry where company_id=' + str(companyId[0]) + '')
+					companyToIndustry = cur.fetchone()
+					if companyToIndustry is None:
+						cur.execute('insert into companyToIndustry (company_id, industry_id) values (' + str(companyId[0]) 
+							+ ", " + str(companyToIndustry[0]) + ')')
 				#print companyId[0]
 	 			#print str(rest[0]) + ', ' + convert(rest[1])+ ', "' + convert(rest[2]) +'", "' + convert(rest[3])+'", ' + convert(rest[4])+', ' + convert(rest[5])+', ' + convert(rest[6])+', ' + convert(rest[7])+', ' + convert(rest[8])+', ' + convert(rest[9]) 
 	 			cur.execute('insert into companies (company_id, day_price_change, market_cap , price_to_earnings_ratio, roe_percent, div_yield_percent, debt_to_equity, price_to_book, net_profit_margin, price_to_free_cash_flow) values ('+ str(companyId[0]) + ', ' + convert(row["1-Day Price Chg %"])+ ', "' + convert(row["Market Cap"]) +'", "' + convert(row["P/E"])+'", ' + convert(row["ROE %"])+', ' + convert(row["Div. Yield %"])+', ' + convert(row["Debt to Equity"])+', ' + convert(row["Price to Book"])+', ' + convert(row["Net Profit Margin (mrq)"])+', ' + convert(row["Price To Free Cash Flow (mrq)"]) +' )')
